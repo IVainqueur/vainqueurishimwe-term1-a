@@ -17,6 +17,8 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+
 
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(MathController.class)
@@ -39,7 +41,8 @@ public class MathOperationsEndToEndTest {
                 .content(objectMapper.writeValueAsString(dto));
 
         mockMvc.perform(request)
-                .andExpect(status().isOk());
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.data").value(18.0));
     }
 
 }
