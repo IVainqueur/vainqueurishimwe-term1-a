@@ -42,7 +42,7 @@ public class MathOperationsEndToEndTest {
 
         mockMvc.perform(request)
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.data").value(18.0));
+                .andExpect(jsonPath("$.calcResponse").value(18.0));
     }
 
 }
